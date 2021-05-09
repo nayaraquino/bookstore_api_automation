@@ -6,31 +6,36 @@ import req from '../../support/api/requests'
 context('Account', () => {
     it('Authorize user', () => {
         req.postAuth().then(postAuthResponse => {
-            assertions.shouldHaveStatus(postAuthResponse, 201)
+            assertions.shouldHaveStatus(postAuthResponse, 200)
+            assertions.shouldDuractionBeFast(postAuthResponse)
         })
     });
 
-    it.only('Generate Token', () => {
+    it('Generate Token', () => {
         req.getGenerateToken().then(getGenerateTokenResponse => {
-            assertions.shouldHaveStatus(getGenerateTokenResponse, 204)
+            assertions.shouldHaveStatus(getGenerateTokenResponse, 200)
+            assertions.shouldDuractionBeFast(getGenerateTokenResponse)
         })
     });
 
     it('Create a user', () => {
         req.postNewUser().then(postNewUserResponse => {
             assertions.shouldHaveStatus(postNewUserResponse, 201)
+            assertions.shouldDuractionBeFast(postNewUserResponse)
         })
     });
 
-    it.only('Delete user', () => {
+    it('Delete user', () => {
         req.deleteUser().then(deleteUserResponse => {
-            assertions.shouldHaveStatus(deleteUserResponse, 204)
+            assertions.shouldHaveStatus(deleteUserResponse, 200)
+            assertions.shouldDuractionBeFast(deleteUserResponse)
         })
     });
 
-    it.only('Get user', () => {
+    it('Get user', () => {
         req.getUser().then(getUserResponse => {
             assertions.shouldHaveStatus(getUserResponse, 200)
+            assertions.shouldDuractionBeFast(getUserResponse)
         })
     });
 });

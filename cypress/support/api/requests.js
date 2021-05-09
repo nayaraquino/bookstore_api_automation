@@ -1,6 +1,6 @@
 class Requests {
 
-    // Account
+    // Bookstore
     getBooks() {
         return cy.request({
             method: 'GET',
@@ -11,7 +11,15 @@ class Requests {
     postNewBook() {
         return cy.request({
             method: 'POST',
-            url: 'bookstore/v1/books'
+            url: 'bookstore/v1/books',
+            body: {
+                "userId": "string",
+                "collectionOfIsbns": [
+                  {
+                    "isbn": "string"
+                  }
+                ]
+              }
         });
     }
 
@@ -39,29 +47,45 @@ class Requests {
     putBook() {
         return cy.request({
             method: 'PUT',
-            url: 'bookstore/v1/books/{ISBN}'
+            url: 'bookstore/v1/books/{ISBN}',
+            body: {
+                "userId": "string",
+                "isbn": "string"
+              }
         });
     }
 
-    // BookStore
+    // Account
     postAuth() {
         return cy.request({
             method: 'POST',
-            url: 'account/v1/authorized'
+            url: 'account/v1/authorized',
+            body: {
+                "userName": "nayaraquino",
+                "password": "N4qu1n0"
+              }
         });
     }
 
     getGenerateToken() {
         return cy.request({
             method: 'POST',
-            url: 'account/v1/generatetoken'
+            url: 'account/v1/generatetoken',
+            body: {
+                "userName": "nayaraquino",
+                "password": "N4qu1n0"
+              }
         });
     }
 
     postNewUser() {
         return cy.request({
             method: 'POST',
-            url: 'account/v1/user'
+            url: 'account/v1/user',
+            body: {
+                "userName": "nayaraquino",
+                "password": "N4qu1n0!"
+              }
         });
     }
 
